@@ -11,10 +11,11 @@ from datetime import datetime
 ## Initial App
 app = FastAPI(
     title="Nestok_Test_Collection",
+    description="API for managing Firebase collections, and interacting with FakeStore API.",
     version="0.1.0",
-    docs_url=None,
-    redoc_url=None,
-    openapi_url = None,
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url = "/openapi.json",
 )
 
 ## Initial Firestore
