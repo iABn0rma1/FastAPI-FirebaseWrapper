@@ -18,7 +18,7 @@ app = FastAPI(
 )
 
 ## Initial Firestore
-cred = credentials.Certificate('newstok_test_collection.json')
+cred = credentials.Certificate('firebase_config.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
