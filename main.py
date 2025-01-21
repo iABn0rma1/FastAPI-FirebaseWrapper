@@ -1,12 +1,15 @@
 import os
 import uvicorn
-from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from fastapi import FastAPI, HTTPException, Request
 
 import firebase_admin # type: ignore
 from firebase_admin import credentials, firestore # type: ignore
 
 import requests
 from datetime import datetime
+
 
 ## Initial App
 app = FastAPI(
@@ -22,6 +25,13 @@ app = FastAPI(
 cred = credentials.Certificate('firebase_config.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
+
+
+# Homepage
+templates = Jinja2Templates(directory="templates")
+@app.get("/", response_class=HTMLResponse)
+def static_homepage(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request, "app_name": "Nestok Test Collection"})
 
 
 # Part 1: Basic endpoints
