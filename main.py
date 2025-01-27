@@ -13,7 +13,7 @@ from datetime import datetime
 
 ## Initial App
 app = FastAPI(
-    title="Nestok_Test_Collection",
+    title="Nestok Test Collection",
     description="API for managing Firebase collections, and interacting with FakeStore API.",
     version="0.1.0",
     docs_url="/docs",
@@ -30,7 +30,7 @@ db = firestore.client()
 # Homepage
 templates = Jinja2Templates(directory="templates")
 @app.get("/", response_class=HTMLResponse)
-def static_homepage(request: Request):
+def homepage(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "app_name": "Nestok Test Collection"})
 
 
